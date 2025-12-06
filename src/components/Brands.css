@@ -1,0 +1,47 @@
+.brands-section {
+    background-color: var(--color-white);
+    padding: var(--spacing-lg) 0;
+}
+
+.brands-title {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.brands-divider {
+    width: 60px;
+    height: 3px;
+    background-color: var(--color-accent);
+    margin: 0 auto var(--spacing-lg);
+}
+
+.brands-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-xl);
+}
+
+.brand-item {
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.brand-item:hover {
+    opacity: 1;
+}
+
+.brand-logo-placeholder {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--color-text-light);
+    border: 2px dashed var(--color-border);
+    /* Temporary visual cue */
+    padding: 1rem 2rem;
+    border-radius: var(--radius-md);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}

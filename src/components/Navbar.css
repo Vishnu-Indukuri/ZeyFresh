@@ -1,0 +1,189 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    z-index: 1000;
+    background-color: var(--color-white);
+    border-bottom: 2px solid var(--color-primary);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    color: var(--color-primary);
+}
+
+.navbar.scrolled {
+    height: 80px;
+    background-color: var(--color-white);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: center;
+    /* Center the links */
+    align-items: center;
+    width: 100%;
+    position: relative;
+    height: 100%;
+}
+
+.logo-container,
+.navbar-logo {
+    display: none;
+    /* Ensure they are gone */
+}
+
+.nav-links-centered {
+    display: flex;
+    list-style: none;
+    gap: var(--spacing-lg);
+    margin: 0;
+    padding: 0;
+    align-items: center;
+}
+
+.nav-links-centered a {
+    font-family: 'Outfit', sans-serif;
+    /* Updated to Outfit */
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.nav-links-centered a:hover {
+    color: var(--color-primary);
+}
+
+.nav-links-centered a::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%) scale(0);
+    background-color: var(--color-accent);
+    /* Gold Dot */
+    border-radius: 50%;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.nav-links-centered a:hover::after {
+    transform: translateX(-50%) scale(1);
+}
+
+.menu-icon {
+    display: none;
+    color: var(--color-primary);
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 1002;
+}
+
+/* Mobile Styles */
+@media screen and (max-width: 960px) {
+    .navbar-container {
+        justify-content: space-between;
+        /* Space out hamburger */
+        padding: 0 var(--spacing-sm);
+    }
+
+    .menu-icon {
+        display: block;
+    }
+
+    .nav-links-centered {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        position: fixed;
+        top: 80px;
+        left: -100%;
+        background: var(--color-white);
+        transition: all 0.5s ease;
+        padding: var(--spacing-md);
+        text-align: center;
+        box-shadow: var(--shadow-md);
+        z-index: 1000;
+        padding-top: 250px;
+        /* Push down to avoid overlap */
+        background: transparent;
+        /* Overlay on top of left */
+        pointer-events: none;
+        /* Let clicks pass if needed? No, links need clicks */
+        background: none;
+    }
+
+    .nav-links-group.active {
+        left: 0;
+    }
+
+    /* Fixing mobile to be cleaner: just hide desktop structure and show a drawer */
+    .nav-links-group.left,
+    .nav-links-group.right {
+        display: none;
+        /* Reset desktop styles */
+    }
+
+    .nav-links-group.active {
+        display: flex;
+        background: var(--color-white);
+        /* We need a better mobile strategy for split nav. 
+        Usually it collapses into one list.
+        Let's modify the JS to render a single mobile list or CSS to stack them.
+     */
+    }
+}
+
+/* Better Mobile Strategy override */
+@media screen and (max-width: 960px) {
+
+    .nav-links-group.left,
+    .nav-links-group.right {
+        display: none;
+    }
+
+    .nav-links-group.left.active,
+    .nav-links-group.right.active {
+        display: flex;
+        position: fixed;
+        left: 0;
+        width: 100%;
+        background: var(--color-white);
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+    }
+
+    .logo-container {
+        position: static;
+        transform: none;
+    }
+
+    /* We need to restructure HTML for mobile or use CSS tricks. 
+       Let's stick to a simple centered logo and assume hamburger handles both lists if we merge them in JS.
+       But we didn't change JS logic to merge. 
+       Let's just stack them in the drawer.
+    */
+
+    .nav-links-group.left.active {
+        top: 80px;
+        height: auto;
+        padding: 20px 0;
+        border-bottom: 1px solid var(--color-border);
+    }
+
+    .nav-links-group.right.active {
+        top: 220px;
+        /* Rough estimate */
+        height: auto;
+        padding: 20px 0;
+    }
+}

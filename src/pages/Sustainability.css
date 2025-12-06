@@ -1,0 +1,59 @@
+.sust-hero {
+    background-color: var(--color-secondary);
+    color: var(--color-white);
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.sust-hero h1 {
+    color: var(--color-white);
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.sust-hero p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+.sust-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+}
+
+.sust-card {
+    text-align: center;
+    padding: 2rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    transition: transform 0.3s ease;
+}
+
+.sust-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.sust-icon {
+    font-size: 3rem;
+    color: var(--color-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.sust-card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.sust-card p {
+    color: var(--color-text-light);
+    line-height: 1.7;
+}
+
+.trace-desc {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    color: var(--color-text-light);
+}
