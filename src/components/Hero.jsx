@@ -5,16 +5,22 @@ import './Hero.css';
 const Hero = () => {
     return (
         <div className="hero-container">
-            {/* Background Image Layer (Hidden via CSS but kept for structure) */}
+            {/* Background Image Layer */}
             <div className="hero-bg"></div>
 
             <div className="hero-content text-center">
                 <div className="hero-animation-wrapper">
-                    {/* Generative Bubbles */}
+                    {/* Generative Bubbles (Background) */}
                     {[...Array(30)].map((_, i) => (
                         <div key={i} className={`hero-bubble hero-bubble-${i + 1}`}></div>
                     ))}
-                    <img src={logo} alt="ZeyFresh Logo" className="hero-only-logo" />
+
+                    {/* Logo */}
+                    <img
+                        src={logo}
+                        alt="ZeyFresh Logo"
+                        className="hero-only-logo"
+                    />
                 </div>
             </div>
         </div>

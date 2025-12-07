@@ -7,10 +7,28 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    padding: 0 20px;
-    background-color: var(--color-white);
-    overflow: hidden;
+    padding: 0;
+    /* Subtle gradient to help white bubbles pop */
+    background: radial-gradient(circle at center, #ffffff 0%, #e0f7fa 100%);
+    /* Remove overflow hidden to allow sticky to work if needed, or keep it if sticky acts inside */
+    ;
 }
+
+.hero-container::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    /* Fade height */
+    background: linear-gradient(to bottom, transparent, #ffffff);
+    pointer-events: none;
+    z-index: 2;
+    /* visible above bg */
+}
+
+;
 
 .hero-bg {
     display: none;
@@ -357,23 +375,6 @@
 .hero-only-logo:hover {
     transform: translateY(-5px);
     /* Simple subtle lift */
-}
-
-/* Glare Effect */
-.logo-glare {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 10;
-    /* On top of image */
-    pointer-events: none;
-    mix-blend-mode: overlay;
-    /* Blends nicely with the logo colors */
-    border-radius: 50%;
-    /* Approx shape of logo, or use straight div if rectangular */
-    transition: opacity 0.3s ease;
 }
 
 .hero-title {
